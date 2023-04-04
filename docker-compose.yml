@@ -1,0 +1,20 @@
+## a compose file the imports 5 modules from a local repo when run
+version: '2'
+services:
+  base:
+    image: akshmakov/cvs2git-migrator
+    environment:
+      CVSROOT: "/srv/cvsroot"
+    volumes:
+      - ./cvs2git.options:/etc/cvs2git-migrator/cvs2git.options
+      - ./cvs:/srv/cvsroot
+      - ./output:/workdir
+    command: --no-cache 
+  TraceProUtility4: 
+    extends: base
+    environment:
+      CVS2GIT_MODULE: TraceProUtility4
+  LAMBDA: 
+    extends: base
+    environment:
+      CVS2GIT_MODULE: LAMBDA
