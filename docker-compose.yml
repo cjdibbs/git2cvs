@@ -10,11 +10,7 @@ services:
       - ./cvs:/srv/cvsroot
       - ./output:/workdir
     command: --no-cache 
-  TraceProUtility4: 
+  migrate: 
     extends: base
     environment:
-      CVS2GIT_MODULE: TraceProUtility4
-  LAMBDA: 
-    extends: base
-    environment:
-      CVS2GIT_MODULE: LAMBDA
+      CVS2GIT_MODULE: ${CVS_FOLDER}
